@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  mysql:
+    container_name: batch-mysql-db
+    image: mysql:8.0.30
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      # 도커 컨테이너 실행시 자동으로 해당 폴더 아래 스크립트가 실행
+      # 알파벳 순서대로 파일이 실행됨.
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=batch-db
+      - MYSQL_USER=seungsu
+      - MYSQL_PASSWORD=1111
+      - MYSQL_ROOT_PASSWORD=1111
+      - TZ=Asia/Seoul

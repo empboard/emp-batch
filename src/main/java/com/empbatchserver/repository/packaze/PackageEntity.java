@@ -13,7 +13,13 @@ import javax.persistence.*;
 public class PackageEntity extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer packageSeq;
+
+    @Column(nullable = false)
     private String packageName;
+
+    @Column(nullable = false)
     private Integer count;
+
+    @Column(nullable = false)
     private Integer period;
 }

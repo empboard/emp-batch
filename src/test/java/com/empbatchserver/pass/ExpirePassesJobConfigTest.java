@@ -56,13 +56,15 @@ public class ExpirePassesJobConfigTest {
 
         List<PassEntity> passEntities = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            PassEntity passEntity = new PassEntity();
-            passEntity.setPackageSeq(1);
-            passEntity.setUserId("A" + 100000 + i);
-            passEntity.setStatus(PassStatus.PROGRESSED);
-            passEntity.setRemainingCount(random.nextInt(11));
-            passEntity.setStartedAt(now.minusDays(60));
-            passEntity.setEndedAt(now.minusDays(1));
+            PassEntity passEntity = PassEntity.builder()
+                    .packageSeq(1)
+                    .userId("A" + 10000 + i)
+                    .status(PassStatus.PROGRESSED)
+                    .remainingCount(random.nextInt(11))
+                    .startedAt(now.minusDays(60))
+                    .endedAt(now.minusDays(1))
+                    .build();
+
             passEntities.add(passEntity);
         }
 

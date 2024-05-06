@@ -1,14 +1,14 @@
 package com.empbatchserver.repository.pass;
 
 import com.empbatchserver.repository.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter @Setter @ToString
+@Getter @ToString @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 @Table(name = "pass")
 public class PassEntity extends BaseEntity {
@@ -30,4 +30,23 @@ public class PassEntity extends BaseEntity {
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
     private LocalDateTime expiredAt;
+
+    public static PassEntity of(BulkPassEntity bulkPassEntity, String userId) {
+        return PassEntity.builder()
+                .packageSeq(bulkPassEntity.getPackageSeq())
+                .userId(userId)
+                .status(PassStatus.READY)
+                .remainingCount(bulkPassEntity.getCount())
+                .startedAt(bulkPassEntity.getStartedAt())
+                .endedAt(bulkPassEntity.getEndedAt())
+                .build();
+    }
+
+    public void updateExpiredAt(LocalDateTime expiredAt) {
+        this.expiredAt = expiredAt;
+    }
+
+    public void updateStatus(PassStatus status) {
+        this.status = status;
+    }
 }

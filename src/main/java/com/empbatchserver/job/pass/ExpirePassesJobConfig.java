@@ -69,8 +69,8 @@ public class ExpirePassesJobConfig {
     @Bean
     public ItemProcessor<PassEntity, PassEntity> expirePassesItemProcessor() {
         return passEntity -> {
-            passEntity.setStatus(PassStatus.EXPIRED);
-            passEntity.setExpiredAt(LocalDateTime.now());
+            passEntity.updateStatus(PassStatus.EXPIRED);
+            passEntity.updateExpiredAt(LocalDateTime.now());
             return passEntity;
         };
     }

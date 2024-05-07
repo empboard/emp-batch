@@ -1,11 +1,13 @@
 package com.empbatchserver.repository.user;
 
 import com.empbatchserver.repository.BaseEntity;
+import com.empbatchserver.utils.JsonToMapConverter;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import java.util.Map;
 
 @Getter @Setter @ToString
 @Entity
@@ -24,5 +26,14 @@ public class UserEntity extends BaseEntity {
     @Column(length = 50)
     private String phone;
 
-    private String meta;
+    @Convert(converter = JsonToMapConverter.class)
+    private Map<String, Object> meta;
+
+    public String getUuid() {
+        if (meta.containsKey("uuid")) {
+            return String.valueOf(meta.get("uuid"));
+        }
+
+        return null;
+    }
 }

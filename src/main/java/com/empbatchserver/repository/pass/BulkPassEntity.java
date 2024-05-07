@@ -1,9 +1,9 @@
 package com.empbatchserver.repository.pass;
 
 import com.empbatchserver.repository.BaseEntity;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter @ToString @Builder
@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "bulk_pass")
 public class BulkPassEntity extends BaseEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bulkPassSeq;
 
     private Integer packageSeq;

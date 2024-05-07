@@ -1,13 +1,11 @@
 package com.empbatchserver.pass;
 
-import com.empbatchserver.config.BatchConfig;
 import com.empbatchserver.config.TestBatchConfig;
 import com.empbatchserver.job.pass.ExpirePassesJobConfig;
 import com.empbatchserver.repository.pass.PassEntity;
 import com.empbatchserver.repository.pass.PassRepository;
 import com.empbatchserver.repository.pass.PassStatus;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;

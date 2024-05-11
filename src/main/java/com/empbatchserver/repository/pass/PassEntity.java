@@ -50,4 +50,8 @@ public class PassEntity extends BaseEntity {
     public void updateStatus(PassStatus status) {
         this.status = status;
     }
+
+    public void updateRemainingCount(int remainingCount) {
+        this.remainingCount = remainingCount;
+    }
 }

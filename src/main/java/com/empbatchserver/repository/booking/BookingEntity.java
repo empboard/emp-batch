@@ -1,6 +1,7 @@
 package com.empbatchserver.repository.booking;
 
 import com.empbatchserver.repository.BaseEntity;
+import com.empbatchserver.repository.pass.PassEntity;
 import com.empbatchserver.repository.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,4 +31,16 @@ public class BookingEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", insertable = false, updatable = false)
     private UserEntity userEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "passSeq", insertable = false, updatable = false)
+    private PassEntity passEntity;
+
+    public void updatePassEntity(PassEntity passEntity) {
+        this.passEntity = passEntity;
+    }
+
+    public void updateUsedPass(boolean usedPass) {
+        this.usedPass = usedPass;
+    }
 }

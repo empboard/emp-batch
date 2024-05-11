@@ -78,7 +78,6 @@ public class ExpirePassesJobConfig {
         };
     }
 
-    // JpaItemWriter: JPA 영속성 관리를 위해 EntityManager를 필수로 설정해야 한다.
     @Bean
     public JpaItemWriter<PassEntity> expirePassesItemWriter() {
         return new JpaItemWriterBuilder<PassEntity>()

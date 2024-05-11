@@ -18,6 +18,7 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JpaCursorItemReader;
 import org.springframework.batch.item.database.builder.JpaCursorItemReaderBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -25,6 +26,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.concurrent.Future;
 
+@Configuration
 public class UsePassesJobConfig {
     private final int CHUNK_SIZE = 5;
     private final JobRepository jobRepository;
